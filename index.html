@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tomas Garijo — Full‑Stack (Angular · .NET)</title>
+  <meta name="description" content="Portfolio y landing de Tomas Garijo: Arquitectura, Angular, .NET, DevOps y liderazgo técnico. Disponible para proyectos y oportunidades." />
+  <meta name="author" content="Tomas Garijo" />
+  <meta property="og:title" content="Tomas Garijo — Full‑Stack (Angular · .NET)" />
+  <meta property="og:description" content="Arquitecto/Full‑Stack especializado en Angular, .NET, CI/CD y diseño de soluciones escalables." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" />
+  <meta property="og:url" content="https://tgarijo.github.io" />
+  <meta name="theme-color" content="#0ea5e9" />
+  
+  <style>
+    :root{
+      --bg:#0b1020; --card:#111a30; --muted:#9db1d3; --text:#e6eefc; --brand:#0ea5e9; --accent:#22d3ee; --ok:#10b981; --warn:#f59e0b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    [data-theme="light"]{ --bg:#f6f8ff; --card:#ffffff; --muted:#51617f; --text:#0b1020; --brand:#0ea5e9; --accent:#059669; --shadow: 0 10px 25px rgba(2,6,23,.08); }
+    *{box-sizing:border-box} html,body{margin:0;height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif} 
+    body{background:radial-gradient(1200px 800px at 80% -10%, rgba(34,211,238,.15), transparent 60%),
+         radial-gradient(1000px 700px at -10% 10%, rgba(14,165,233,.18), transparent 60%), var(--bg); color:var(--text);}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(45deg,var(--brand),var(--accent)); box-shadow:0 0 20px var(--brand)}
+    .nav a.btn{padding:10px 14px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));}
+    .toggle{border:none;background:transparent;color:var(--text);font-size:14px;padding:8px 12px;border-radius:10px;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:46px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:var(--shadow)}
+    .hero .intro{padding:28px}
+    .title{font-size:clamp(28px,5vw,42px);line-height:1.1;margin:0 0 12px}
+    .subtitle{color:var(--muted);font-size:clamp(14px,2.4vw,18px);margin:0 0 18px}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px;font-size:13px}
+    .cta{display:flex;gap:12px;margin-top:8px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:600;border:1px solid rgba(255,255,255,.15);}
+    .btn--primary{background:linear-gradient(90deg,var(--brand),var(--accent));color:white;border:none}
+    .btn--ghost{background:transparent}
+
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}
+    .stat{padding:18px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-align:center}
+    .stat h3{margin:0;font-size:22px}
+    .stat p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    /* Skills */
+    .section{margin:40px 0}
+    .section h2{font-size:24px;margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .pill{padding:10px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;font-size:14px}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{overflow:hidden}
+    .project .thumb{height:140px;background:linear-gradient(120deg,rgba(14,165,233,.25),rgba(34,211,238,.15));border-bottom:1px solid rgba(255,255,255,.08)}
+    .project .body{padding:16px}
+    .project h3{margin:0 0 6px;font-size:18px}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+    .project .meta{display:flex;gap:8px;margin-top:10px}
+
+    /* Experience */
+    .timeline{display:grid;gap:12px}
+    .item{padding:16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .item .top{display:flex;justify-content:space-between;gap:10px}
+    .item .role{font-weight:700}
+    .item .when{color:var(--muted);font-size:13px}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .contact form{display:grid;gap:10px}
+    .input, textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.03);color:var(--text)}
+    textarea{min-height:120px}
+
+    footer{margin:40px 0 10px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .projects, .grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tomas Garijo",
+    "url": "https://tgarijo.github.io",
+    "jobTitle": "Arquitecto / Full‑Stack Engineer",
+    "knowsAbout": ["Angular", ".NET", "C#", "Clean Architecture", "DevOps", "Docker", "GitLab CI", "Azure"],
+    "sameAs": [
+      "https://github.com/tgarijo",
+      "https://www.linkedin.com/in/tomas-garijo/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand"><span class="dot"></span> Tomas Garijo</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="btn" href="#proyectos" aria-label="Ir a proyectos">Proyectos</a>
+        <a class="btn" href="#contacto" aria-label="Ir a contacto">Contacto</a>
+        <button class="toggle" id="themeToggle" title="Cambiar tema">🌓</button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <section class="intro card">
+        <h1 class="title">Arquitecto / Full‑Stack <span style="background:linear-gradient(90deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent">Angular · .NET</span></h1>
+        <p class="subtitle">Diseño soluciones escalables con <strong>Clean Architecture</strong>, <strong>CQRS</strong>, <strong>EF Core</strong>, y frontends de alto rendimiento en <strong>Angular 17–19</strong> (signals, RxJS, NgRx). Lidero iniciativas de <strong>DevOps</strong> con Docker y CI/CD en GitLab/Azure.</p>
+        <div class="badges">
+          <span class="badge">⚡ Microservicios .NET 8</span>
+          <span class="badge">🧩 Angular Signals</span>
+          <span class="badge">🚀 CI/CD · Docker</span>
+          <span class="badge">🧭 Arquitectura y liderazgo</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn--primary" href="#contacto">Hablemos</a>
+          <a class="btn btn--ghost" href="https://github.com/TU_USUARIO" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/TU_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+      <aside class="card">
+        <div class="stats">
+          <div class="stat"><h3>10+ años</h3><p>Experiencia</p></div>
+          <div class="stat"><h3>50k+</h3><p>Usuarios en producción</p></div>
+          <div class="stat"><h3>CI/CD</h3><p>GitLab · Azure</p></div>
+          <div class="stat"><h3>Angular</h3><p>17–19 · Signals</p></div>
+          <div class="stat"><h3>.NET</h3><p>6–8 · EF Core</p></div>
+          <div class="stat"><h3>DevOps</h3><p>Docker · Nginx</p></div>
+        </div>
+      </aside>
+    </header>
+
+    <section class="section">
+      <h2>Habilidades Clave</h2>
+      <div class="grid card" style="padding:16px">
+        <div class="pill">Angular 17–19, Signals, RxJS, NgRx</div>
+        <div class="pill">.NET 6–8, C#, ASP.NET Core, Minimal APIs</div>
+        <div class="pill">Arquitectura: Clean Architecture, DDD, CQRS</div>
+        <div class="pill">EF Core, SQL Server, Performance Tuning</div>
+        <div class="pill">Testing: xUnit/NUnit, Jest, Cypress</div>
+        <div class="pill">DevOps: Docker, Nginx, GitLab CI/CD, Azure</div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <h2>Proyectos Destacados</h2>
+      <div class="projects">
+        <article class="project card">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>Plataforma de reservas B2B</h3>
+            <p>Front en Angular 19 (signals, @if/@for) y backend .NET 8 con CQRS + MediatR. Despliegue con Docker/Nginx y GitLab.</p>
+            <div class="meta">
+              <span class="pill">Angular</span>
+              <span class="pill">.NET</span>
+              <span class="pill">Docker</span>
+            </div>
+          </div>
+        </article>
+        <article class="project card">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>Asistente IA de reservas</h3>
+            <p>Widget en Angular + API .NET que integra LLMs para disponibilidad de hoteles y generación de itinerarios.</p>
+            <div class="meta">
+              <span class="pill">Angular</span>
+              <span class="pill">.NET</span>
+              <span class="pill">AI</span>
+            </div>
+          </div>
+        </article>
+        <article class="project card">
+          <div class="thumb"></div>
+          <div class="body">
+            <h3>Portal de operaciones</h3>
+            <p>Dashboard de KPIs en Angular y APIs .NET con pipelines de datos, autenticación y roles.</p>
+            <div class="meta">
+              <span class="pill">Angular</span>
+              <span class="pill">.NET</span>
+              <span class="pill">Azure</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Experiencia</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="top"><span class="role">Tech Lead · Arquitecto</span><span class="when">2021 — Actualidad</span></div>
+          <p>Definición de arquitectura, gobierno del código, prácticas SOLID, diseño de pipelines y despliegues automatizados.</p>
+        </div>
+        <div class="item">
+          <div class="top"><span class="role">Senior Full‑Stack</span><span class="when">2016 — 2021</span></div>
+          <p>Desarrollo extremo a extremo de front y back para apps de negocio con alta concurrencia y requisitos de calidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Certificaciones & Formación</h2>
+      <div class="grid">
+        <div class="pill">AZ‑204 (en progreso)</div>
+        <div class="pill">Scrum Master</div>
+        <div class="pill">Clean Architecture & DDD</div>
+      </div>
+    </section>
+
+    <section class="section card" id="contacto" style="padding:18px">
+      <h2>Contacto</h2>
+      <div class="contact">
+        <form id="contactForm">
+          <input class="input" name="name" placeholder="Tu nombre" required />
+          <input class="input" name="email" placeholder="Tu email" type="email" required />
+          <textarea name="message" placeholder="Cuéntame sobre tu proyecto" required></textarea>
+          <button class="btn btn--primary" type="submit">Enviar</button>
+          <p id="msg" style="margin:6px 0 0;color:var(--muted)"></p>
+        </form>
+        <div>
+          <p>¿Te interesa colaborar, contratar o mentoría técnica?</p>
+          <ul>
+            <li>📧 <a href="mailto:tu.email@dominio.com">tu.email@dominio.com</a></li>
+            <li>💼 <a href="https://www.linkedin.com/in/TU_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li>👨‍💻 <a href="https://github.com/TU_USUARIO" target="_blank" rel="noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> Tomas Garijo — Disponible para proyectos. Hecho con ❤ en Angular & .NET mindset.</footer>
+  </div>
+
+  <script>
+    // Tema persistente
+    const root=document.documentElement; const key='tg-theme';
+    const saved=localStorage.getItem(key); if(saved){root.setAttribute('data-theme', saved)}
+    document.getElementById('themeToggle').addEventListener('click',()=>{
+      const t=root.getAttribute('data-theme')==='light'?'dark':'light';
+      root.setAttribute('data-theme',t); localStorage.setItem(key,t);
+    });
+    // Año
+    document.getElementById('year').textContent=new Date().getFullYear();
+    // Form
+    const f=document.getElementById('contactForm');
+    f.addEventListener('submit', (e)=>{ e.preventDefault();
+      const data=new FormData(f);
+      const subject=encodeURIComponent('Contacto desde la landing');
+      const body=encodeURIComponent(`Nombre: ${data.get('name')}\nEmail: ${data.get('email')}\n\nMensaje:\n${data.get('message')}`);
+      window.location.href=`mailto:tu.email@dominio.com?subject=${subject}&body=${body}`;
+      document.getElementById('msg').textContent='Abriendo tu cliente de correo…';
+      f.reset();
+    });
+  </script>
+</body>
+</html>
